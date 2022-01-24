@@ -1,0 +1,10 @@
+$max: 900;
+$step: 100;
+
+@for $i from 1 through calc($max/$step) {
+  $value: $i * $step;
+
+  .fw-#{$value} {
+    font-weight: $value;
+  }
+}

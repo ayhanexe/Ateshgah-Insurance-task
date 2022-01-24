@@ -1,0 +1,620 @@
+* {
+  border: none;
+  outline: none !important;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none !important;
+  color: #008ddd;
+}
+a.prevent-color {
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.background-orange {
+  background-color: #ff8300;
+  color: white;
+}
+.background-orange.bordered {
+  border: 1px solid #c0c5c7;
+}
+
+.background-white {
+  background-color: #ffffff;
+  color: #323e48;
+}
+.background-white.bordered {
+  border: 1px solid #c0c5c7;
+}
+
+.background-gold {
+  background-color: #ffcd00;
+  color: #323e48;
+}
+.background-gold.bordered {
+  border: 1px solid #c0c5c7;
+}
+
+.fw-100 {
+  font-weight: 100;
+}
+
+.fw-200 {
+  font-weight: 200;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+
+.fw-900 {
+  font-weight: 900;
+}
+
+#app,
+#login-app {
+  width: 100vw;
+  height: 100%;
+  background-color: #f5f7f9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+#app #sidebar {
+  width: 15rem;
+  height: 100%;
+  background-color: #323e48;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
+}
+#app #sidebar #sidebar-toggler {
+  width: 21px;
+  height: 79px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  transform: translateY(-30px);
+}
+#app #sidebar #sidebar-toggler #sidebar-toggler-circle {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 2px;
+  flex-shrink: 0;
+  background-color: #323e48;
+  color: #ffcd00;
+  border-radius: 50%;
+  transform: translateX(7px);
+  z-index: 1000;
+  cursor: pointer;
+}
+#app #sidebar #sidebar-toggler #sidebar-toggler-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 999;
+  z-index: 1000;
+}
+#app #sidebar #sidebar-logo-container {
+  width: 100%;
+  height: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#app #sidebar #sidebar-logo-container #sidebar-logo {
+  width: 150px;
+}
+#app #sidebar #sidebar-content {
+  display: flex;
+  flex-direction: column;
+}
+#app #sidebar #sidebar-content .sidebar-item {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  gap: 10px;
+  font-size: 1rem;
+  color: white;
+  position: relative;
+  transition: background-color 0.15s ease-out;
+}
+#app #sidebar #sidebar-content .sidebar-item .sidebar-item-icon {
+  width: 1.2rem;
+}
+#app #sidebar #sidebar-content .sidebar-item.active {
+  background-color: rgba(196, 196, 196, 0.2);
+}
+#app #sidebar #sidebar-content .sidebar-item.active::before {
+  content: "";
+  width: 3px;
+  height: 100%;
+  border-radius: 0 3px 3px 0;
+  background-color: #ff8300;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#app #sidebar #sidebar-content .sidebar-item:hover {
+  background-color: rgba(196, 196, 196, 0.2);
+}
+#app #sidebar #theme-toggler {
+  width: 128px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 70px;
+  background-color: #1b2630;
+  margin-top: auto;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+#app #sidebar #theme-toggler .theme-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#app #sidebar #theme-toggler .theme-item .theme-toggler-icon {
+  cursor: pointer;
+  z-index: 1;
+}
+#app #sidebar #theme-toggler .theme-selector {
+  width: calc(50% - 8px);
+  height: calc(100% - 8px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #c4c4c4;
+  border-radius: 90px;
+  z-index: 0;
+  transform: translate(4px, 4px);
+  opacity: 0.2;
+}
+#app #sidebar #sidebar-info {
+  margin: 20px 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #c0c5c7;
+  opacity: 0.5;
+}
+#app #content {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  overflow-y: auto;
+}
+#app #content #header {
+  width: 100%;
+  height: 80px;
+  flex-shrink: 0;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 66px 0 40px;
+  justify-content: space-between;
+}
+#app #content #header #to-right {
+  justify-self: flex-end;
+  display: flex;
+  gap: 20px;
+}
+#app #content #header #to-right #header-button {
+  height: 40px;
+  padding: 0.625rem 1rem;
+  border-radius: 3px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#app #content #header #to-right #header-button span {
+  font-size: 1.3rem;
+}
+#app #content #header #to-right #user-area {
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#app #content #header #to-right #user-area #user-profile {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+}
+#app #content #header #to-right #user-area #user-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#app #content #header #to-right #user-area #profile-username {
+  white-space: nowrap;
+  display: block;
+}
+#app #content #header #to-right #user-area #logout-icon {
+  width: 1.2rem;
+}
+#app #content #header #search-input-container {
+  display: flex;
+  gap: 8px;
+}
+#app #content #header #search-input-container,
+#app #content #header #search-input-container input::placeholder {
+  color: #c0c5c7;
+}
+#app #content #inner-content {
+  padding: 0 65px 0 40px;
+  display: flex;
+  flex-direction: column;
+}
+#app #content #inner-content #welcome-section {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  gap: 10px;
+}
+#app #content #inner-content #welcome-section #welcome-title {
+  font-weight: 600;
+  font-size: 2rem;
+  color: #323e48;
+}
+#app #content #inner-content #welcome-section #welcome-description {
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: #323e48;
+  margin: 8px 0;
+}
+#app #content #inner-content #welcome-section #welcome-message {
+  width: 70%;
+  height: 100%;
+  background-color: white;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+}
+#app #content #inner-content #welcome-section #welcome-message .features {
+  display: flex;
+  margin-top: 24px;
+  gap: 52px;
+}
+#app #content #inner-content #welcome-section #welcome-message .features .feature-item {
+  display: flex;
+  gap: 12px;
+}
+#app #content #inner-content #welcome-section #welcome-message .features .feature-item .feature-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+#app #content #inner-content #welcome-section #welcome-message .features .feature-item .feature-item-info .feature-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+#app #content #inner-content #welcome-section #ad {
+  width: 30%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: 700;
+}
+#app #content #inner-content #contracts-section {
+  margin-top: 40px;
+}
+
+#login-app #image-area {
+  width: 65.8vw;
+  height: 100%;
+}
+#login-app #image-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#login-app #form-area {
+  width: 34.2vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 80px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#login-app #form-area #form-area-logo-container {
+  display: flex;
+  justify-content: center;
+}
+#login-app #form-area #form-area-logo-container #form-area-logo,
+#login-app #form-area #form-area-logo-container #form-area-logo-mobile {
+  width: 320px;
+}
+#login-app #form-area #form-area-logo-container #form-area-logo-mobile {
+  display: none;
+}
+#login-app #form-area #form-container {
+  width: 320px;
+  margin-top: 80px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-items-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+.form-items-group label {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+input.form-item[type=text] {
+  height: 46px;
+  font-size: 0.9375rem;
+  border: 1px solid #c0c5c7;
+  border-radius: 3px;
+  padding: 12px 16px;
+}
+input.form-item[type=text]::placeholder {
+  color: #c0c5c7;
+}
+
+button.form-item {
+  width: 100%;
+  height: 46px;
+  border-radius: 3px;
+  font-size: 0.9375rem;
+  padding: 12px 0;
+}
+
+.two-sided-line {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #69737b;
+  margin: 32px 0;
+}
+.two-sided-line::before, .two-sided-line::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #c0c5c7;
+}
+.two-sided-line::before {
+  margin-right: 1rem;
+}
+.two-sided-line::after {
+  margin-left: 1rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.fancy-table {
+  background-color: white;
+  border-radius: 5px;
+  border-spacing: 0;
+}
+.fancy-table th,
+.fancy-table td {
+  text-align: left;
+  padding: 20px 30px;
+}
+.fancy-table td {
+  color: #323e48;
+}
+
+.status {
+  padding: 8px 12px;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.status.status-success {
+  background-color: rgba(52, 209, 134, 0.3);
+  color: #29c77b;
+}
+.status.status-timeout {
+  background-color: rgba(255, 131, 0, 0.3);
+  color: #FF8300;
+}
+.status.status-cancelled {
+  background-color: rgba(225, 37, 27, 0.3);
+  color: #E1251B;
+}
+
+.menu-button {
+  padding: 15px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.menu-button .menu-circles {
+  width: 4px;
+  height: 4px;
+  background-color: black;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+}
+.menu-button .menu-circles::before, .menu-button .menu-circles::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background-color: black;
+  color: #323e48;
+  border-radius: 50%;
+  position: relative;
+  position: absolute;
+  top: 0;
+}
+.menu-button .menu-circles::before {
+  left: -8px;
+}
+.menu-button .menu-circles::after {
+  right: -8px;
+}
+
+@media all and (max-width: 1200px) {
+  #login-app #image-area {
+    width: 55vw;
+  }
+  #login-app #form-area {
+    width: 45vw;
+  }
+
+  #app {
+    flex-direction: column;
+  }
+  #app #sidebar {
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    margin-bottom: 39px;
+    padding: 20px;
+  }
+  #app #sidebar #sidebar-content,
+#app #sidebar #theme-toggler,
+#app #sidebar #sidebar-info,
+#app #sidebar #sidebar-toggler {
+    display: none;
+  }
+  #app #sidebar .mobile-search {
+    color: white;
+  }
+  #app #sidebar #sidebar-logo-container {
+    flex: auto;
+    height: 100%;
+  }
+  #app #content #inner-content {
+    padding: 0 16px;
+  }
+  #app #content #inner-content #welcome-section #welcome-message,
+#app #content #inner-content #welcome-section #ad {
+    border-radius: 5px;
+  }
+  #app #content #header {
+    display: none;
+  }
+}
+@media all and (max-width: 992px) {
+  #login-app #image-area {
+    width: 45vw;
+  }
+  #login-app #form-area {
+    width: 55vw;
+  }
+
+  #app #content #inner-content #welcome-section {
+    height: auto;
+    flex-direction: column-reverse;
+  }
+  #app #content #inner-content #welcome-section #welcome-message {
+    width: 100%;
+  }
+  #app #content #inner-content #welcome-section #ad {
+    width: 100%;
+  }
+}
+@media all and (max-width: 768px) {
+  #login-app #image-area {
+    display: none;
+  }
+  #login-app #form-area {
+    width: 100%;
+    padding: 0;
+  }
+  #login-app #form-area #form-area-logo-container {
+    width: 100%;
+    background-color: #323e48;
+    padding: 12px 0;
+  }
+  #login-app #form-area #form-area-logo-container #form-area-logo {
+    display: none;
+  }
+  #login-app #form-area #form-area-logo-container #form-area-logo-mobile {
+    width: 150px;
+    display: block;
+  }
+  #login-app #form-area #form-container {
+    margin-top: 40px;
+  }
+}
+@media all and (max-width: 576px) {
+  #app #content #inner-content #welcome-section #welcome-message .features {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

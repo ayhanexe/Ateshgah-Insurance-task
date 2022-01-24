@@ -1,0 +1,30 @@
+* {
+  border: none;
+  outline: none !important;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none !important;
+  color: #008ddd;
+
+  &.prevent-color {
+    color: inherit;
+  }
+}
+
+button {
+  cursor: pointer;
+}

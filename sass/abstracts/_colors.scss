@@ -1,0 +1,12 @@
+@import "./variables";
+
+@each $name, $data in $colors {
+  .background-#{$name} {
+    background-color: map-get($data, "bg");
+    color: map-get($data, "color");
+
+    &.bordered {
+      border: 1px solid #c0c5c7;
+    }
+  }
+}
